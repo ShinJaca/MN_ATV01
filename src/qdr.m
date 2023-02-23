@@ -23,7 +23,7 @@
 
 ## Author: Jaca <jaca@debSpiegel>
 ## Created: 2023-02-22
-´
+
 function [xp, xn] = qdr(a,b,c)
   d=b.^2-4.*a.*c;
   xp=(-b+sqrt(d))/(2.*a);
