@@ -1,0 +1,39 @@
+
+
+## -*- texinfo -*-
+## @deftypefn {} {@var{retval} =} falsapos (@var{input1}, @var{input2})
+##
+## @seealso{}
+## @end deftypefn
+
+## Author: Jaca <jaca@debSpiegel>
+## Created: 2023-03-02
+
+function out = falsapos (f, a, b, e, N)
+  if ((f(a) .* f(b)) > 0)
+     error("Não há mudança de sinal!!");
+  endif
+   
+  printf("Iter.\t\tX\t\t\terro\n");
+   
+  it = 1;
+  
+  r = b - (f(b) .* (a-b)/(f(a)-f(b))); % Estimativa inicial (primeira iteração)
+  fr = f(r);
+  
+  while ( (abs(fr) > e) && (it < N) )  % Condição de parada do loop
+    printf("%##d\t\t% .6f\t\t% .6f\n", it, r, abs(fr));
+    
+    fr = f(r);
+    
+    if ((f(a).*fr)<0)  % Teste de posição da estimativa
+      b = r;
+    else
+     a = r;
+    endif
+    it++;
+    r = b - (f(b) .* (a-b)/(f(a)-f(b))); % Nova estimativa;
+  endwhile
+  out = r;
+  printf("Zero: % .6f\n", r);
+endfunction
