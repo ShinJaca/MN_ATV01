@@ -26,7 +26,11 @@ function retval = gaussp1 (A, b)
   [nl, nc]= size(A);
   for k=1:(nl -1)
     for i = k+1 : nl
-      
+     m = A(i,k)/A(k,k);
+     for j=k+1 : nl
+	     A(i,j) -= (m * A(k,j);
+	     b(i) -= (m * b(k));
+     endfor
     endfor
   endfor
 endfunction
