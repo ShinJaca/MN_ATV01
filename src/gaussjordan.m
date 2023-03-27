@@ -3,9 +3,10 @@
 
 % A = Matriz de coeficientes
 % b = Matriz de
+% AI = Matriz Ampliada com identidade
 function [A, b, AI] = gaussjordan (A, b)
     [nl, nc] = size(A);
-    AI = [A eye(nl)];
+    AI = eye(nl);
 
     for k = 1:nc
         [maior, i] = max(abs(A(k:nl, k)));
