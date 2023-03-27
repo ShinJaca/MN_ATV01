@@ -11,13 +11,13 @@ function [A, b] = gausspivo (A, b)
         ipr = i + k -1;
 
         if ipr != k
-            A([k, i], :) = A([i, k], :);
-            b([k, i]) = b([i, k]);
+            A([k, ipr], :) = A([ipr, k], :);
+            b([k, ipr]) = b([ipr, k]);
         endif
 
         for i = k + 1:nl
             m = [A b](i, k) / [A b](k, k);
-            A(i, k:nl) -= (m * A(k, k:nl))
+            A(i, k:nl) -= (m * A(k, k:nl));
             b(i) -= (m * b(k));
         endfor
 
