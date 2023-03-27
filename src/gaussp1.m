@@ -22,15 +22,21 @@
 ## Author: Jaca <jaca@debSpiegel>
 ## Created: 2023-03-14
 
-function retval = gaussp1 (A, b)
-  [nl, nc]= size(A);
-  for k=1:(nl -1)
-    for i = k+1 : nl
-     m = A(i,k)/A(k,k);
-     for j=k+1 : nl
-	     A(i,j) -= (m * A(k,j);
-	     b(i) -= (m * b(k));
-     endfor
+function [A b] = gaussp1 (A, b)
+    [nl, nc] = size(A);
+
+    for k = 1:(nl -1)
+
+        for i = k + 1:nl
+            m = A(i, k) / A(k, k);
+
+            for j = k:nl
+                A(i, j) -= (m * A(k, j));
+                b(i) -= (m * b(k));
+            endfor
+
+        endfor
+
     endfor
-  endfor
+
 endfunction

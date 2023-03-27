@@ -4,25 +4,23 @@
 % A = Matriz de coeficientes
 % b = Matriz de
 function [A, b] = gausspivo (A, b)
-    Ab = [A b]
-    [nl, nc] = size(Ab);
+    [nl, nc] = size([A b]);
 
     for k = 1:nl - 1
-        [maior, i] = max(abs(Ab(k:nl, k)));
+        [maior, i] = max(abs([A b](k:nl, k)));
         ipr = i + k -1;
 
         if ipr != k
-            Ab([k, i], :) = Ab([i, k], :);
+            A([k, i], :) = A([i, k], :);
+            b([k, i]) = b([i, k]);
         endif
 
         for i = k + 1:nl
-            m = Ab(i, k) / Ab(k, k);
-            Ab(i, k:nc) -= (m * Ab(k, k:nc))
+            m = [A b](i, k) / [A b](k, k);
+            A(i, k:nl) -= (m * A(k, k:nl))
+            b(i) -= (m * b(k));
         endfor
 
     endfor
-
-    A = Ab(:, 1:nl);
-    b = Ab(:, nc);
 
 endfunction

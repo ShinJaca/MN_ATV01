@@ -7,7 +7,7 @@ function x = substreg (A, b)
     x(nl) = b(nl) / A(nl, nl);
 
     for i = nl - 1:-1:1
-        sum = b(i)
+        sum = b(i);
 
         for j = i + 1:nc
             sum -= (A(i, j) * x(j));
