@@ -62,14 +62,17 @@ function [x, k, Erx] = gaussseidel(A, b, tol, N, x0)
         % end
 
         for i = 1:nl
+            r = 0;
 
             for j = 1:i - 1
-                x(i, 1) += C(i, j) * x(j, 1);
+                r += C(i, j) * x(j, 1);
             end
 
             for j = i + 1:nl
-                x(i, 1) += C(i, j) * xo(j, 1) + d(j, 1);
+                r += C(i, j) * xo(j, 1);
             end
+
+            x(i, 1) = r + d(i, 1);
 
         end
 
