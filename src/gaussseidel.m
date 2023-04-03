@@ -58,27 +58,26 @@ function [x, k, Erx] = gaussseidel(A, b, tol, N, x0)
         %     end
 
         %     x(i, 1) = (b(i, 1) - r) / A(i, i);
-        %     xo = x;
 
         % end
 
         for i = 1:nl
 
             for j = 1:i - 1
-                x(i) += C(i, j) * x(j);
+                x(i, 1) += C(i, j) * x(j, 1);
             end
 
             for j = i + 1:nl
-                x(i) += C(i, j) + xo(j) + d(j);
+                x(i, 1) += C(i, j) * xo(j, 1) + d(j, 1);
             end
 
         end
 
-        xo = x;
-
         for i = 1:nl
-            Erx(i) = abs((x(i) - xo(i)) / x(i));
+            Erx(i, 1) = abs((x(i, 1) - xo(i, 1)) / x(i, 1));
         end
+
+        xo = x;
 
         if max(Erx) < tol
             return;
