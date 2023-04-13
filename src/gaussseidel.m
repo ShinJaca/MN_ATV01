@@ -24,7 +24,7 @@ function [x, k, Erx] = gaussseidel(A, b, tol, N, x0)
 
     if max(beta) >= 1
         printf("O sistema não converge\n");
-        return;
+        % return;
     end
 
     % Gauss-Seidel
@@ -81,6 +81,8 @@ function [x, k, Erx] = gaussseidel(A, b, tol, N, x0)
         end
 
         xo = x;
+
+        % [C x]
 
         if max(Erx) < tol
             return;
