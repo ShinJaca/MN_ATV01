@@ -9,6 +9,7 @@ function [xk, k, Erx] = jacobi(A, b, tol, N, x0)
 
         if abs(A(l, l)) < t
             printf("Matriz não é diagonal dominante");
+            return;
         endif
 
     endfor
@@ -39,6 +40,7 @@ function [xk, k, Erx] = jacobi(A, b, tol, N, x0)
         for i = 1:nl
             Erx(i) = abs(((xk(i) - xk1(i)) / xk(i)));
         endfor
+
         xk1 = xk;
 
         if max(Erx) < tol
