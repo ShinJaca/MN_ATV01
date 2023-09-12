@@ -5,6 +5,8 @@
 % A = Matriz de coeficientes
 % b = Matriz de 
 function Ab = gaussb (Ab)
+    % nl - Número de linhas
+    % nc - Número de colunas
     [nl, nc] = size(Ab);
     % percorrendo as linhas até a penúltima
     for k = 1:nl - 1
