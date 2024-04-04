@@ -22,26 +22,33 @@
 ## Author: Jaca <jaca@debSpiegel>
 ## Created: 2023-03-09
 
-function xr = iterlin (f, g, x0, xv, err, N)
-xr = x0;
-i = 0;
+% function xr = iterlin (f, g, x0, xv, err, N)
+function xr = iterlin (f, g, x0, err, N)
+    xr = x0;
+    i = 0;
 
-printf("i\txr\t\txr-xa\t\tf(xr)\t\tea\t\txv-xr\n");
-while (i<=N)
-  xa = xr;
-  xr = g(xa);
-  i++;
-  
-  if (xr != 0)
-    ea = abs((xr - xa)/xr);
-  endif
-  printf("% 2d\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\n", i, xr, xr-xa, f(xr), ea, xv-xr);
-  if ((ea<err) || (i>=N))
-    return;
-  endif
-  
-endwhile
+    % printf("i\txr\t\txr-xa\t\tf(xr)\t\tea\t\txv-xr\n");
+    printf("i\txr\t\tf(xr)\t\tea\n");
 
-printf("Método falhou em %d iterações", i);
+    while (i <= N)
+        xa = xr;
+        xr = g(xa);
+        i++;
+
+        if (xr != 0)
+            ea = abs((xr - xa) / xr);
+        endif
+
+        % printf("% 2d\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\n", i, xr, xr-xa, f(xr), ea, xv-xr);
+        printf("%##d\t% .6f\t% .6f\t% .6f\n", i, xr, f(xr), ea);
+
+        if ((ea < err) || (i >= N))
+            printf("Raiz: % .6f\n", xr);
+            return;
+        endif
+
+    endwhile
+
+    printf("Método falhou em %d iterações", i);
 
 endfunction

@@ -20,7 +20,7 @@ function out = bissec(f, a, b, e, N)
      error("Não há mudança de sinal!!");
    endif
    
-   printf("Iter.\t\tX\t\t\terro\n");
+   printf("i\ta\t\tb\t\txr\t\tea\n");
    
    it = 1;
    r = a;
@@ -32,7 +32,7 @@ function out = bissec(f, a, b, e, N)
      
      if ((fr == 0) || (de <= e)) % Condição de parada ou o zero ou o erro menor
        out = r;
-       printf("Zero: % .6f\n", r);
+       printf("Raiz: % .6f\n", r);
        return;
      endif
      
@@ -44,7 +44,7 @@ function out = bissec(f, a, b, e, N)
        a = r;
      endif
      
-     printf("%##d\t\t% .6f\t\t% .6f\n", it, r, de);
+     printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a, b, r, de);
      
    endwhile
    printf("O método falhou em %d iterações\n", it);

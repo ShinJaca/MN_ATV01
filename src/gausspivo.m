@@ -20,7 +20,7 @@ function [A, b] = gausspivo (A, b)
             A(i, k:nl) -= (m * A(k, k:nl));
             b(i) -= (m * b(k));
         endfor
-
+        Ab = [A b]
     endfor
 
 endfunction

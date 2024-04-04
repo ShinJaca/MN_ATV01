@@ -14,15 +14,18 @@ function out = falsapos (f, a, b, e, N)
      error("Não há mudança de sinal!!");
   endif
    
-  printf("Iter.\t\tX\t\t\terro\n");
+  % printf("Iter.\t\tX\t\t\terro\n");
+  printf("i\ta\t\tb\t\txr\t\tea\n");
    
   it = 1;
   
   r = b - (f(b) .* (a-b)/(f(a)-f(b))); % Estimativa inicial (primeira iteração)
   fr = f(r);
-  
+  % printf("%##d\t\t% .6f\t\t% .6f\n", it, r, abs(fr));
+  printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a, b, r, abs(fr));
   while ( (abs(fr) > e) && (it < N) )  % Condição de parada do loop
-    printf("%##d\t\t% .6f\t\t% .6f\n", it, r, abs(fr));
+    % printf("%##d\t\t% .6f\t\t% .6f\n", it, r, abs(fr));
+    printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a, b, r, abs(fr));
     
     fr = f(r);
     
@@ -35,5 +38,5 @@ function out = falsapos (f, a, b, e, N)
     r = b - (f(b) .* (a-b)/(f(a)-f(b))); % Nova estimativa;
   endwhile
   out = r;
-  printf("Zero: % .6f\n", r);
+  printf("Raiz: % .6f\n", r);
 endfunction

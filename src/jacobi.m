@@ -33,6 +33,8 @@ function [xk, k, Erx] = jacobi(A, b, tol, N, x0)
     xk = x0;
     xk1 = xk;
     k = 0;
+    
+    C
 
     while (k < N)
         xk = C * xk1 + d;

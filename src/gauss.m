@@ -17,9 +17,10 @@ function [A, b] = gauss (A, b)
             endfor
 
             b(i) -= (m * b(k));
+            
 
         endfor
-
+        Ab = [A b]
     endfor
 
 endfunction
