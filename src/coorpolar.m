@@ -23,26 +23,31 @@
 ## Created: 2024-04-02
 
 function [r, theta] = coorpolar (x, y)
-    r = sqrt(x^2+y^2);
-    
+    r = sqrt(x^2 + y^2);
+
     if x < 0
-      if y > 0
-          theta = atan(y/x) + pi;
-      elseif y < 0
-          theta = atan(y/x) - pi;
-      else
-          theta = pi;
-      endif
+
+        if y > 0
+            theta = atan(y / x) + pi;
+        elseif y < 0
+            theta = atan(y / x) - pi;
+        else
+            theta = pi;
+        endif
+
     elseif x == 0
-      if y > 0
-        theta = pi/2;
-      elseif y < 0
-        theta = -pi/2;
-      else
-        theta = 0;
-      endif
+
+        if y > 0
+            theta = pi / 2;
+        elseif y < 0
+            theta = -pi / 2;
+        else
+            theta = 0;
+        endif
+
     else
-      theta = atan(y/x);
+        theta = atan(y / x);
     endif
+
     theta = rad2deg(theta)
 endfunction

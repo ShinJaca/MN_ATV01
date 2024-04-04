@@ -22,6 +22,36 @@
 ## Author: Jaca <jaca@debSpiegel>
 ## Created: 2024-04-02
 
-function retval = babilon (input1, input2)
+function x = babilon (x, a, err=1e-3, n=10)
+    xo = x;
+    ero = 1;
+    ii = 1;
+    iflag = 0;
+
+    if (a == 0)
+        x = 0;
+        return;
+    endif
+
+    if (a < 0)
+        a = abs(a);
+        iflag = 1;
+    endif
+
+    while (ero > err)
+        x = (x + a / x) / 2;
+        ero = abs((x - xo) / x);
+
+        if (ii >= n)
+            break;
+        endif
+
+        ii++;
+        xo = x;
+    endwhile
+
+    if (iflag)
+        x = x * i;
+    endif
 
 endfunction
