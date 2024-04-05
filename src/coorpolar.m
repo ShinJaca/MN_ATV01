@@ -49,5 +49,5 @@ function [r, theta] = coorpolar (x, y)
         theta = atan(y / x);
     endif
 
-    theta = rad2deg(theta)
+    theta = rad2deg(theta);
 endfunction
