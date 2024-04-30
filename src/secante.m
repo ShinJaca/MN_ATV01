@@ -1,27 +1,27 @@
-## Copyright (C) 2023 Jaca
-##
-## This program is free software: you can redistribute it and/or modify
-## it under the terms of the GNU General Public License as published by
-## the Free Software Foundation, either version 3 of the License, or
-## (at your option) any later version.
-##
-## This program is distributed in the hope that it will be useful,
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
-##
-## You should have received a copy of the GNU General Public License
-## along with this program.  If not, see <https://www.gnu.org/licenses/>.
+function xn1 = secante (f, x0, x1, er, N)
 
-## -*- texinfo -*-
-## @deftypefn {} {@var{retval} =} secante (@var{input1}, @var{input2})
-##
-## @seealso{}
-## @end deftypefn
+    % x(n-1)
+    x1n = x0;
+    xn = x1;
 
-## Author: Jaca <jaca@debSpiegel>
-## Created: 2023-03-09
+    printf("i\txr\t\tf(xr)\t\tea\n");
 
-function retval = secante (input1, input2)
+    for n = 2:N
+        xn1 = (x1n * f(xn) - xn * f(x1n)) / (f(xn) - f(x1n));
+        ea = abs(xn1 - xn) / xn1;
+        printf("%##d\t% .6f\t% .6f\t% .6f\n", i, xn1, f(xn1), ea);
+
+        if ea < er
+            printf("Raiz: % .6f\nIteração: %d\n", xn1, n);
+            % printf("Raiz: % .6f\n", xn1);
+            return;
+        endif
+
+        x1n = xn;
+        xn = xn1;
+
+    endfor
+
+    printf("Método falhou em %d iterações", n);
 
 endfunction
