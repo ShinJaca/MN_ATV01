@@ -15,17 +15,19 @@ function out = falsapos (f, a, b, e, N)
   endif
    
   % printf("Iter.\t\tX\t\t\terro\n");
-  printf("i\ta\t\tb\t\txr\t\tea\n");
+  % printf("i\ta\t\tb\t\txr\t\tea\n");
+  printf("i\ta\t\tf(a)\t\tb\t\tf(b)\t\txr\t\tf(xr)\t\tea\n");
    
   it = 1;
   
   r = b - (f(b) .* (a-b)/(f(a)-f(b))); % Estimativa inicial (primeira iteração)
   fr = f(r);
   % printf("%##d\t\t% .6f\t\t% .6f\n", it, r, abs(fr));
-  printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a, b, r, abs(fr));
+  printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a,f(a), b,f(b), r,f(r), abs(fr));
   while ( (abs(fr) > e) && (it < N) )  % Condição de parada do loop
     % printf("%##d\t\t% .6f\t\t% .6f\n", it, r, abs(fr));
-    printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a, b, r, abs(fr));
+    % printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a, b, r, abs(fr));
+    printf("%##d\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\t% .6f\n", it, a,f(a), b,f(b), r,f(r), abs(fr));
     
     fr = f(r);
     
