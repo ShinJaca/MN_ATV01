@@ -8,8 +8,8 @@ function xn1 = secante (f, x0, x1, er, N)
 
     for n = 2:N
         xn1 = (x1n * f(xn) - xn * f(x1n)) / (f(xn) - f(x1n));
-        ea = abs(xn1 - xn) / xn1;
-        printf("%##d\t% .6f\t% .6f\t% .6f\n", i, xn1, f(xn1), ea);
+        ea = abs((xn1 - xn) / xn1);
+        printf("%##d\t% .6f\t% .6f\t% .6f\n", n, xn1, f(xn1), ea);
 
         if ea < er
             printf("Raiz: % .6f\nIteração: %d\n", xn1, n);
