@@ -5,28 +5,6 @@ function [x, k, Erx] = gaussseidel(A, b, tol, N, x0)
     Erx = inf(nl, 1);
     k = 1;
 
-    % sassenfeld
-    beta = zeros(nl, 1);
-
-    for i = 1:nl
-
-        for j = 1:i - 1
-            beta(i) += abs(A(i, j)) * beta(j);
-        end
-
-        for j = i + 1:nl
-            beta(i) += abs(A(i, j));
-        end
-
-        beta(i) /= abs(A(i, i));
-
-    end
-
-    if max(beta) >= 1
-        printf("O sistema não converge\n");
-        % return;
-    end
-
     % Gauss-Seidel
 
     for i = 1:nl
@@ -43,6 +21,32 @@ function [x, k, Erx] = gaussseidel(A, b, tol, N, x0)
         end
 
     end
+    C
+    % sassenfeld
+    be = zeros(nl, 1);
+
+    for i = 1:nl
+
+        for j = 1:i - 1
+            be(i) += abs(C(i, j)) * be(j);
+        end
+
+        for j = i + 1:nl
+            be(i) += abs(C(i, j));
+        end
+
+        % be(i) /= abs(C(i, i));
+
+    end
+    
+    be
+
+    if max(be) >= 1
+        printf("O sistema não converge\n");
+        return;
+    end
+    
+
 
     for k = 1:N
 
