@@ -1,3 +1,5 @@
+% a+bx
+
 function [a, b, r2] = regressaoMinimosQuadrados(x, y)
 
     if ((length(x) - length(y)) ~= 0)
@@ -14,8 +16,8 @@ function [a, b, r2] = regressaoMinimosQuadrados(x, y)
     a = (soma_y - b * soma_x) / n;
 
     avg_y = soma_y / n
-    st = sum(y - avg_y)^2
-    sr = (sum(y - a - b .* x))^2
+    st = sum((y - avg_y).^2)
+    sr = sum((y - a - b .* x).^2)
 
     sy = sqrt(st / (n - 1))
     syx = sqrt(sr / (n - 2))
