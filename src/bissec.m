@@ -21,7 +21,8 @@ function out = bissec(f, a, b, e, N)
         error("Não há mudança de sinal!!");
     endif
 
-    printf("i\ta\t\tf(a)\t\tb\t\tf(b)\t\txr\t\tf(xr)\t\tea\n");
+    % printf("i\ta\t\tf(a)\t\tb\t\tf(b)\t\txr\t\tf(xr)\t\tea\n");
+    printf("k\ta\t\tf(a)\t\tb\t\tf(b)\t\txr\t\tf(xr)\t\tea\n");
 
     it = 1;
     r = a;
@@ -34,7 +35,7 @@ function out = bissec(f, a, b, e, N)
 
         if ((fr == 0) || (de <= e))% Condição de parada ou o zero ou o erro menor
             out = r;
-            printf("Raiz: % .6f\n", r);
+            printf("Raiz: % .6f\n\n", r);
             return;
         endif
 
